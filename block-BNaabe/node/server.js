@@ -8,6 +8,7 @@ var modulePath = path.join(__dirname,'index.html');
 
 var http = require('http');
 var qs = require('querystring');
+const { getMaxListeners } = require('process');
 var server = http.createServer(handleRequest);
 
 function handleRequest(req, res) {
@@ -19,10 +20,10 @@ function handleRequest(req, res) {
             res.statusCode = 201;
             var parsedData = qs.parse(store);
             res.end(JSON.stringify(parsedData));
-
         })
     }
 }
+
 
 server.listen( 3000,() => {
  console.log('server is listeing on port 3000');
