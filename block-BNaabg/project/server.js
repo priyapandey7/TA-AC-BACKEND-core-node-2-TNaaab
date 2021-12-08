@@ -10,7 +10,10 @@ function handleRequest(req,res) {
  req.on('end',() =>{
      if (req.url === '/users' && req.method === 'POST'){
       var userName =   JSON.parse(dataStrore).username;
-      fs.open(usersPath + userName +'json' )
+      fs.open(usersPath + userName +'.json', 'wx' ,(err, fd) =>{
+          if (err) return console.log(err) ;
+          console.log(fd);
+      })
      }
  })
 }
